@@ -3,5 +3,6 @@ module.exports = {
     execute(client, func, MessageActionRow, MessageButton, PluginSettings) {
         console.log('WL LOADED');
         console.log('WL LOADED');
+        console.log('WL LOADED');
     }
 }
