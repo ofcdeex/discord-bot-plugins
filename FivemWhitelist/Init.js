@@ -4,6 +4,5 @@ module.exports = {
         console.log('WL LOADED');
         console.log('WL LOADED');
         console.log('WL LOADED');
-        console.log('WL LOADED');
     }
 }
