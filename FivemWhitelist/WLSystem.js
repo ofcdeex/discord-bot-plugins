@@ -4,7 +4,7 @@ module.exports = {
     event: "messageCreate",
     async execute(client, message, MessageActionRow, MessageButton, PluginSettings) {
 
-        //crash
+        crash
 
         if (message.content == "!a") {
 
