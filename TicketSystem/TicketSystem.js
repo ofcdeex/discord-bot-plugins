@@ -1,9 +1,6 @@
-// Native
-const Embed = require('./Modules/EmbedCreator');
-
 module.exports = {
     event: "interactionCreate",
-    async execute(client, interaction, MessageActionRow, MessageButton, PluginSettings) {
+    async execute(client, interaction, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
 
 
         if (!interaction.isButton()) return;
@@ -20,40 +17,44 @@ module.exports = {
                 return searchTicket.send(`<@${interaction.user.id}> você já possui este ticket criado, não é possível criar um novo.`);
             }
 
-            ticketsCategory.guild.channels.create('ticket-' + interaction.user.id, {
-                type: 'text',
+            ticketsCategory.guild.channels.create({
+                name: 'ticket-' + interaction.user.id,
+                type: 0,
                 parent: ticketsCategory,
                 permissionOverwrites: [
                     {
                         id: interaction.user,
-                        allow: ['VIEW_CHANNEL'],
+                        allow: [PermissionsBitField.Flags.ViewChannel],
                     },
                     {
                         id: ticketsCategory.guild.roles.everyone,
-                        deny: ['VIEW_CHANNEL'],
+                        deny: [PermissionsBitField.Flags.ViewChannel],
                     },
                 ],
             }).then((channel) => {
 
                 for (var i = 0; i < settings.rolesStaff.length; i++) {
                     var findRoles = ticketsCategory.guild.roles.cache.find(r => r.id === settings.rolesStaff[i]);
-                    channel.permissionOverwrites.edit(findRoles, { VIEW_CHANNEL: true });
+                    channel.permissionOverwrites.edit(findRoles, [PermissionsBitField.Flags.ViewChannel]);
                 }
 
-                const ticketabertoMsg = Embed.Create(`${settings.ServerName}`, "7289DA", settings.ticketopenText);
-                let fecharTicket = new MessageActionRow()
-                    .addComponents(
-                        new MessageButton()
-                            .setLabel("Fechar Ticket")
-                            .setEmoji("🔒")
-                            .setCustomId("close")
-                            .setStyle("DANGER")
-                    );
+                const ticketabertoMsg = new EmbedBuilder()
+                    .setColor(0x7289DA)
+                    .setTitle(settings.ServerName)
+                    .setDescription(settings.ticketopenText);
 
-                channel.send({ embeds: [ticketabertoMsg], components: [fecharTicket] });
-                /*channel.send(`<@${interaction.user.id}> <@&253733245806444544> <@&253747236184391680> <@&821863070048845906>`).then(msg => {
-                    msg.delete();
-                });*/
+                let fecharTicket = new ButtonBuilder()
+                    .setLabel("Fechar Ticket")
+                    .setEmoji("🔒")
+                    .setCustomId("close")
+                    .setStyle("Danger");
+
+                channel.send({
+                    embeds: [ticketabertoMsg],
+                    components: [new ActionRowBuilder().addComponents(fecharTicket)]
+                });
+
+
             });
 
         }
