@@ -1,6 +1,6 @@
 module.exports = {
     event: "guildMemberRemove",
-    execute(client, GuildMemeber, MessageActionRow, MessageButton, PluginSettings) {
+    execute(client, GuildMemeber, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
 
   
       const FindChannel = client.channels.cache.find(channel => channel.id == PluginSettings.AutoRoleWelcome.ID_ChannelAlert);
