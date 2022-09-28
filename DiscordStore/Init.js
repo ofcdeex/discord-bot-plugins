@@ -1,6 +1,6 @@
 module.exports = {
   event: "ready",
-  execute(client, func, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder) {
+  execute(client, func, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
 
     var config = PluginSettings.DiscordStore;
 

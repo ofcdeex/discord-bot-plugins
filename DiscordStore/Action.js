@@ -1,6 +1,6 @@
 module.exports = {
     event: "interactionCreate",
-    async execute(client, interaction, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder) {
+    async execute(client, interaction, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
 
         if (!interaction.isButton()) return;
         interaction.deferUpdate();
