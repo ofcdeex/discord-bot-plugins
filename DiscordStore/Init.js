@@ -10,7 +10,7 @@ module.exports = {
         .setColor(0x7289DA)
         .setTitle(config.loja)
         .setDescription(`**Produto:** ${element.produto}\n**Valor:** R$ ${element.valor}\n**Descrição:**\n` + element.descricao)
-        .setImage(config.imagem)
+        .setImage(element.imagem)
         .setFooter({ text: `${config.loja} todos direitos reservados.` });
 
       let buttonsTicket = new ButtonBuilder()
