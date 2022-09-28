@@ -35,7 +35,7 @@ module.exports = {
 
                 for (var i = 0; i < settings.rolesStaff.length; i++) {
                     var findRoles = ticketsCategory.guild.roles.cache.find(r => r.id === settings.rolesStaff[i]);
-                    channel.permissionOverwrites.edit(findRoles, [PermissionsBitField.Flags.ViewChannel]);
+                    channel.permissionOverwrites.edit(findRoles, { ViewChannel: true });
                 }
 
                 const ticketabertoMsg = new EmbedBuilder()
