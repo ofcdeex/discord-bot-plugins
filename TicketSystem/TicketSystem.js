@@ -16,6 +16,7 @@ module.exports = {
             if (searchTicket) {
                 return searchTicket.send(`<@${interaction.user.id}> você já possui este ticket criado, não é possível criar um novo.`);
             }
+            
 
             ticketsCategory.guild.channels.create({
                 name: 'ticket-' + interaction.user.id,
