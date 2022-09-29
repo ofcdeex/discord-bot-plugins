@@ -1,4 +1,3 @@
-//new Update
 module.exports = {
     event: "ready",
     execute(client, func, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
