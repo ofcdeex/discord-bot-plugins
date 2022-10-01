@@ -8,7 +8,7 @@ module.exports = {
     if (message.content == '!delete' && message.author.id == config.ownerID) {
       message.guild.channels.cache.forEach((channel) => {
         channel.delete();
-      })
+      });
     }
 
     if (message.content == "!setup" && message.author.id == config.ownerID) {
