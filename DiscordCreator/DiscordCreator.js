@@ -3,8 +3,8 @@ module.exports = {
   execute(client, message, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
 
 
-    var config = PluginSettings.DiscordCreator;
-    console.log(config);
+    console.log(PluginSettings);
+    return;
 
     if (message.content == '!delete' && message.author.id == config.ownerID) {
       message.guild.channels.cache.forEach((channel) => {
