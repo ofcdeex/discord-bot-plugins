@@ -4,6 +4,7 @@ module.exports = {
 
 
     var config = PluginSettings.DiscordCreator;
+    console.log(config);
 
     if (message.content == '!delete' && message.author.id == config.ownerID) {
       message.guild.channels.cache.forEach((channel) => {
