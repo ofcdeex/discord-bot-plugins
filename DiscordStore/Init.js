@@ -1,6 +1,8 @@
+const { ButtonBuilder, EmbedBuilder, ActionRowBuilder } = require('discord.js');
+
 module.exports = {
   event: "ready",
-  execute(client, func, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
+  execute(client, func, PluginSettings) {
 
     var config = PluginSettings.DiscordStore;
 

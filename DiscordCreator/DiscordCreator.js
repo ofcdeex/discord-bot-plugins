@@ -1,6 +1,7 @@
+const { PermissionsBitField, EmbedBuilder } = require('discord.js');
 module.exports = {
   event: "messageCreate", // EVENT FROM DISCORD.JS
-  execute(client, message, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
+  execute(client, message, PluginSettings) {
 
 
     var config = PluginSettings.DiscordCreator;

@@ -1,6 +1,8 @@
+const { PermissionsBitField, EmbedBuilder } = require('discord.js');
+
 module.exports = {
     event: "interactionCreate",
-    async execute(client, interaction, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
+    async execute(client, interaction, PluginSettings) {
 
         if (!interaction.isButton()) return;
         interaction.deferUpdate();

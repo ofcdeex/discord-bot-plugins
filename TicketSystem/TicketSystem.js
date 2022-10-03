@@ -1,6 +1,8 @@
+const { ButtonBuilder, EmbedBuilder, ActionRowBuilder, PermissionsBitField } = require('discord.js');
+
 module.exports = {
     event: "interactionCreate",
-    async execute(client, interaction, ActionRowBuilder, PermissionsBitField, ButtonBuilder, EmbedBuilder, PluginSettings) {
+    async execute(client, interaction, PluginSettings) {
 
 
         if (!interaction.isButton()) return;
@@ -16,7 +18,7 @@ module.exports = {
             if (searchTicket) {
                 return searchTicket.send(`<@${interaction.user.id}> você já possui este ticket criado, não é possível criar um novo.`);
             }
-            
+
 
             ticketsCategory.guild.channels.create({
                 name: 'ticket-' + interaction.user.id,
