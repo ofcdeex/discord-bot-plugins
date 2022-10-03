@@ -36,6 +36,10 @@ module.exports = {
                 ],
             }).then((channel) => {
 
+                channel.send(`<@${interaction.user.id}>`).then(msg => {
+                    msg.delete();
+                });
+
                 for (var i = 0; i < settings.rolesStaff.length; i++) {
                     var findRoles = ticketsCategory.guild.roles.cache.find(r => r.id === settings.rolesStaff[i]);
                     channel.permissionOverwrites.edit(findRoles, { ViewChannel: true });
