@@ -21,9 +21,16 @@ module.exports = {
         .setCustomId(element.id)
         .setStyle("Success");
 
-      FindChannel.messages.fetch(FindChannel.lastMessageId).then(msg => {
-        // msg.edit({ embeds: [MsgDefault], components: [ButtonOpenTicket] });
-      }).catch(err => {
+
+      if (!FindChannel.lastMessageId) {
+        FindChannel.send({
+          embeds: [MsgDefault],
+          components: [new ActionRowBuilder().addComponents(buttonsTicket)]
+        });
+      }
+
+
+      FindChannel.messages.fetch(FindChannel.lastMessageId).catch(err => {
         FindChannel.send({
           embeds: [MsgDefault],
           components: [new ActionRowBuilder().addComponents(buttonsTicket)]
