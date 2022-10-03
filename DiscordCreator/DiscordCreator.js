@@ -118,6 +118,28 @@ module.exports = {
       });
 
       message.guild.channels.create({
+        name: 'Suporte',
+        type: 4
+      }).then(category => {
+        message.guild.channels.create({
+          name: '🎫┇ticket',
+          type: 0,
+          parent: category,
+          permissionOverwrites: [
+            {
+              id: message.guild.roles.everyone,
+              deny: [PermissionsBitField.Flags.SendMessages],
+            }
+          ]
+        });
+      });
+
+      message.guild.channels.create({
+        name: 'Tickets',
+        type: 4
+      });
+
+      message.guild.channels.create({
         name: 'Staff',
         type: 4,
         permissionOverwrites: [
