@@ -1,19 +1,13 @@
 const { PermissionsBitField, EmbedBuilder } = require('discord.js');
 module.exports = {
-  event: "messageCreate", // EVENT FROM DISCORD.JS
-  execute(client, message, PluginSettings) {
+  event: "interactionCreate", // EVENT FROM DISCORD.JS
+  execute(client, interaction, PluginSettings) {
 
+    if (!interaction.isChatInputCommand()) return;
 
     var config = PluginSettings.DiscordCreator;
 
-    if (message.content == '!delete' && message.author.id == config.ownerID) {
-      message.guild.channels.cache.forEach((channel) => {
-        channel.delete();
-      });
-    }
-
-    if (message.content == "!setup" && message.author.id == config.ownerID) {
-
+    if (interaction.commandName == 'configurar' && interaction.user.id === config.ownerID) {
       const sys = new EmbedBuilder()
         .setColor(0xFF8F00)
         .setTitle('Sysbots - DiscordCreator')
@@ -28,36 +22,6 @@ module.exports = {
         message.channel.send({ embeds: [sys] });
       });
 
-      /*var modID = null;
-      var adminID = null;
-      var membroID = null;
-
-      message.guild.roles.create({
-        name: 'Mod', permissions:
-          [
-            PermissionsBitField.Flags.SendMessages,
-            PermissionsBitField.Flags.KickMembers,
-            PermissionsBitField.Flags.MuteMembers
-          ], color: 0x0400FF
-      }).then(mod => {
-        modID = mod.id;
-      });
-
-      message.guild.roles.create({
-        name: 'Admin', permissions: [PermissionsBitField.Flags.SendMessages,
-        PermissionsBitField.Flags.Administrator], color: 0xFF0000
-      }).then(admin => {
-        adminID = admin.id;
-      });
-
-      message.guild.roles.create({
-        name: 'Membro', permissions:
-          [PermissionsBitField.Flags.SendMessages], color: 0x04FF00
-      }).then(membro => {
-        membroID = membro.id;
-      });
-
-      */
 
       message.guild.channels.create({
         name: 'Recepção',
@@ -190,8 +154,14 @@ module.exports = {
           });
         });
       });
-
     }
+
+    if (interaction.commandName == 'deletar' && interaction.user.id === config.ownerID) {
+      message.guild.channels.cache.forEach((channel) => {
+        channel.delete();
+      });
+    }
+
 
   }
 };
