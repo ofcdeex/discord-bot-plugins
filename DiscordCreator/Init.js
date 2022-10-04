@@ -1,6 +1,6 @@
 module.exports = {
     event: "ready", // EVENT FROM DISCORD.JS
-    async execute(client, message, PluginSettings, rest) {
+    async execute(client, func, PluginSettings, rest) {
 
         const Guilds = client.guilds.cache.map(guild => guild.id);
 
