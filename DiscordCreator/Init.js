@@ -1,3 +1,5 @@
+const { Routes } = require('discord.js');
+
 module.exports = {
     event: "ready", // EVENT FROM DISCORD.JS
     async execute(client, func, PluginSettings, rest) {
