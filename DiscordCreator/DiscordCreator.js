@@ -18,9 +18,7 @@ module.exports = {
         .setTitle('Sysbots - DiscordCreator')
         .setDescription('Seu discord está pronto para uso!');
 
-      interaction.channel.bulkDelete(1).then(a => {
-        interaction.channel.send({ embeds: [sys] });
-      });
+      interaction.reply({ embeds: [sys] });
 
 
       interaction.guild.channels.create({
@@ -149,9 +147,7 @@ module.exports = {
           type: 2,
           parent: category
         }).then(a => {
-          interaction.channel.bulkDelete(1).then(a => {
-            interaction.channel.send({ embeds: [sysSuccess] });
-          });
+          interaction.editReply({ embeds: [sysSuccess] });
         });
       });
     }
